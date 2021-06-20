@@ -1,0 +1,80 @@
+<fieldset class="fieldset create account" style="margin-top:50px;">
+    <legend class="legend"><span><?= $block->escapeHtml(__('Company Information')) ?></span></legend><br>
+
+    <div class="field required">
+        <label for="contact_code"
+            class="label"><span><?= $block->escapeHtml(__('Country')) ?></span></label>
+        <div class="control">
+        <select name="country_code" id="country_code">
+            <?php
+                /** @var \AHT\CustomerAttribute\Block\Template $block */
+                $helper = $this->helper('AHT\CustomerAttribute\Helper\Data');
+                $countryCode = $helper->getCountryCode();
+                foreach ($countryCode as $key => $value) :
+            ?>
+            <option value="<?= $value ?>"><?= $block->getCountryName($key)?></option>
+            <?php
+                endforeach
+            ?>
+        </select>
+        </div>
+    </div>
+    <div class="field required">
+        <label for="contact_phone_number"
+            class="label"><span><?= $block->escapeHtml(__('Contact Phone Number')) ?></span></label>
+        <div class="control">
+            <input type="text" name="contact_phone_number" id="contact_phone_number" value=""
+                title="<?= $block->escapeHtmlAttr(__('Contact Phone Number')) ?>" class="input-text"
+                data-validate="{required:true}">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="company_type" class="label"><span><?= $block->escapeHtml(__('Company Type')) ?></span></label>
+        <div class="control">
+            <select name="company_type" id="company_type" title="<?php echo __('Company Type') ?>" class="input-text"
+                data-validate="{required:true}">
+                <option value=""><?php echo __('---- Please Select Company type ---') ?></option>
+                <option value="0"><?php echo __('CBD Manufacturer') ?></option>
+                <option value="1"><?php echo __('CBD Brand and Marketing company') ?></option>
+                <option value="2"><?php echo __('CBD Extractor') ?></option>
+                <option value="3"><?php echo __('Other') ?></option>
+            </select>
+        </div>
+    </div>
+    <div class="field required organization_name">
+        <label for="organization_name"
+            class="label"><span><?= $block->escapeHtml(__('Organization Name')) ?></span></label>
+        <div class="control">
+            <input type="text" name="organization_name" id="organization_name" value=""
+                title="<?= $block->escapeHtmlAttr(__('Organization Name')) ?>" class="input-text"
+                >
+        </div>
+    </div>
+
+    <?= $block->getChildHtml('form_additional_info') ?>
+</fieldset>
+
+
+<script>
+require([
+    "jquery"
+], function($) {
+    $(document).ready(function() {
+        $('.organization_name').hide();
+        $('.organization_name').val('');
+        $('#company_type').change(function() {
+            if ($('#company_type').val() == 3) {
+                $('.organization_name').show();
+            } else {
+                $('.organization_name').hide();
+                $('.organization_name').val('');
+            }
+        });
+
+        //xu ly phone number
+            $('#country_code').change(function() {
+            $('#contact_phone_number').val("+" + $('#country_code').val()+" ");
+        })
+    });
+});
+</script>

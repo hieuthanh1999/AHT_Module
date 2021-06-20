@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+<table name="aht_sales" resource="default" engine="innodb" comment="Order Details Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="order_id" padding="5" unsigned="true" nullable="false" default="0" comment="Order ID"/>
+        <column xsi:type="int" name="order_item_id" padding="5"  nullable="false" unsigned="true" default="0" comment="Order Item ID"/>
+        <column xsi:type="varchar" name="order_item_sku"  nullable="true" length="64" comment="Order Item SKU"/>
+        <column xsi:type="decimal" name="order_item_price" precision="2"  unsigned="true" nullable="false" default="0" comment="Order Item Price"/>
+        <column xsi:type="int" name="commission_type" padding="5"   nullable="false" default="0" unsigned="true" comment="Commission Type"/>
+        <column xsi:type="decimal" name="commission_value" precision="2" nullable="false" default="0" unsigned="true" comment="Commission Value"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="AHT_SALES_ORDER_ITEM_SKU" indexType="fulltext">
+            <column name="order_item_sku"/>
+        </index>
+    </table>
+</schema>

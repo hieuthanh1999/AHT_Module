@@ -1,0 +1,21 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aht_sales_listing_data_source" xsi:type="string">AHT\Sales\Model\ResourceModel\Sales\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="AHT\Sales\Model\ResourceModel\Sales\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aht_sales</argument>
+            <argument name="resourceModel" xsi:type="string">AHT\Sales\Model\ResourceModel\Sales</argument>
+        </arguments>
+    </virtualType>
+
+    //plugin customer
+    <type name="Magento\Customer\Model\Data\Customer">
+        <plugin name="aht_plugin_customer" type="AHT\Sales\Plugin\Customer\PluginCustomer" sortOrder="1" disabled="false"/>
+    </type>
+    
+</config>
