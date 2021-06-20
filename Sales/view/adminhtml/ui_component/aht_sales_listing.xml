@@ -175,15 +175,27 @@
                 </item>
             </argument>
         </column>
+
+             <column name="commission_type" class="AHT\Sales\Ui\Component\Listing\Column\CommissionType" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Commission Type</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+<!-- 
         <column name="commission_type">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Commission Type</item>
+                    <item name="label" xsi:type="string" translate="true"></item>
                 </item>
             </argument>
-        </column>
+        </column> -->
           <column name="commission_value">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

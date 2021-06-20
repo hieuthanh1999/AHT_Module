@@ -60,7 +60,7 @@ class CustomTab extends AbstractModifier
                             'config' => [
                                 'autoRender' => true,
                                 'componentType' => 'insertListing',
-                                //'dataScope' => 'sales_order_grid',
+                                //`'dataScope' => 'sales_order_grid',
                                 'externalProvider' => 'sales_order_grid.sales_order_grid_data_source',
                                 'selectionsProvider' => 'sales_order_grid.sales_order_grid.product_columns.ids',
                                 'ns' => 'sales_order_grid',
